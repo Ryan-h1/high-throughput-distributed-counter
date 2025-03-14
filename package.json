@@ -6,8 +6,6 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "start": "node dist/api/server.js",
-    "dev": "ts-node-dev src/api/server.ts",
     "docker:up": "docker-compose up -d --build --wait",
     "docker:down": "docker-compose down",
     "setup-db": "node --loader ts-node/esm src/db/setup-dynamodb.ts",
