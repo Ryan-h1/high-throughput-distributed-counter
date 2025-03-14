@@ -8,9 +8,10 @@
     "build": "tsc",
     "start": "node dist/api/server.js",
     "dev": "ts-node-dev src/api/server.ts",
-    "setup-db": "ts-node-esm src/db/setup-dynamodb.ts",
     "docker:up": "docker-compose up -d --build --wait",
     "docker:down": "docker-compose down",
+    "setup-db": "node --loader ts-node/esm src/db/setup-dynamodb.ts",
+    "start:dev": "npm run docker:up && npm run setup-db",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
@@ -56,5 +57,9 @@
       "eslint --fix",
       "prettier --write"
     ]
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   }
 }

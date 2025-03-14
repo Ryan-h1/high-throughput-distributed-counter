@@ -8,8 +8,8 @@ import {
   DeleteCommand,
   DynamoDBDocumentClient,
 } from '@aws-sdk/lib-dynamodb';
-import { dynamoDBClient } from '../../db/config';
-import { ACCOUNTS_TABLE, Account } from '../../db/schema';
+import { dynamoDBClient } from '../../db/config.js';
+import { ACCOUNTS_TABLE, Account } from '../../db/schema.js';
 
 const router = Router();
 

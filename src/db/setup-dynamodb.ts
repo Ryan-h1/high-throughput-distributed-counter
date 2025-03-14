@@ -1,6 +1,6 @@
 import { CreateTableCommand, DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { TABLES } from './schema';
-import dynamoDBClient from './config';
+import { TABLES } from './schema.js';
+import dynamoDBClient from './config.js';
 
 // Function to create all tables
 const createTables = async (dynamoDBClient: DynamoDBClient): Promise<void> => {
