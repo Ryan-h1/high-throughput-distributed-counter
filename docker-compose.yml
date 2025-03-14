@@ -1,0 +1,34 @@
+services:
+  # DynamoDB service
+  dynamodb:
+    image: amazon/dynamodb-local
+    ports:
+      - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -sharedDb"
+    volumes:
+      - dynamodb-data:/home/dynamodblocal/data
+    networks:
+      - app-network
+
+  # Express API service
+  api:
+    build:
+      context: .
+      dockerfile: src/api/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DYNAMODB_ENDPOINT=http://dynamodb:8000
+    depends_on:
+      - dynamodb
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  dynamodb-data:
+
