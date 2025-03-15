@@ -136,3 +136,5 @@ dist
 .pnp.*
 
 .cursorignore
+
+load-test-results/
